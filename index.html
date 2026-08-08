@@ -9,13 +9,8 @@
 <link rel="canonical" href="https://claimfreepatch.netlify.app/">
 <style>
   :root{
-    --bg:#050505;
-    --panel:#0d0d0d;
-    --ink:#f5f5f5;
-    --muted:#8a8a8a;
-    --line:#1c1c1c;
-    --red:#ff3b2f;
-    --red-glow:rgba(255,59,47,.45);
+    --bg:#050505; --panel:#0d0d0d; --ink:#f5f5f5; --muted:#8a8a8a;
+    --line:#1c1c1c; --red:#ff3b2f; --red-glow:rgba(255,59,47,.45);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{min-height:100%}
@@ -55,8 +50,7 @@
   }
   .law{
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:12px; color:var(--muted); letter-spacing:.04em;
-    margin-bottom:40px;
+    font-size:12px; color:var(--muted); letter-spacing:.04em; margin-bottom:40px;
   }
   .law b{color:var(--ink); font-weight:600}
   .cta{
@@ -65,8 +59,7 @@
     font-size:1.15rem; letter-spacing:.03em;
     padding:22px 48px; border-radius:12px;
     box-shadow:0 0 0 0 var(--red-glow);
-    animation:pulse 2.4s infinite;
-    transition:transform .12s ease;
+    animation:pulse 2.4s infinite; transition:transform .12s ease;
   }
   .cta:hover{transform:translateY(-2px)}
   .cta:active{transform:translateY(1px)}
@@ -76,8 +69,7 @@
     100%{box-shadow:0 0 0 0 rgba(255,59,47,0)}
   }
   .voice{
-    margin-top:22px;
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    margin-top:22px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
     font-size:.85rem; color:var(--muted); letter-spacing:.04em;
   }
   .voice b{color:var(--ink)}
@@ -92,9 +84,7 @@
     color:var(--muted); margin-bottom:14px;
   }
   .what ul{list-style:none; display:grid; gap:10px}
-  .what li{
-    font-size:.95rem; color:var(--ink); padding-left:18px; position:relative;
-  }
+  .what li{font-size:.95rem; color:var(--ink); padding-left:18px; position:relative}
   .what li::before{
     content:""; position:absolute; left:0; top:.55em;
     width:8px; height:8px; border-radius:50%; background:var(--red);
@@ -106,15 +96,13 @@
     display:flex; align-items:center; justify-content:center;
     margin:0 auto 22px; font-size:2rem; color:var(--red);
   }
-  .actions{
-    display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:28px;
-  }
+  .actions{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:28px}
   .btn{
-    display:inline-block; padding:14px 22px; border-radius:10px;
-    font-weight:700; font-size:.95rem; text-decoration:none;
-    border:1px solid var(--red); background:var(--red); color:#fff;
+    display:inline-block; padding:14px 22px; border-radius:10px; border:0; cursor:pointer;
+    font-weight:700; font-size:.95rem; text-decoration:none; font-family:inherit;
+    background:var(--red); color:#fff;
   }
-  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+  .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
   .fine{
     margin-top:28px; font-size:12px; color:var(--muted); line-height:1.5;
     max-width:46ch; margin-left:auto; margin-right:auto;
@@ -158,8 +146,8 @@
     <h1>Patch <span class="hi">ready.</span></h1>
     <p class="lede">Download the disclosure page. Replace the bracketed fields. Publish at <b style="color:var(--ink)">/ab2013</b> or similar. Link it from your footer.</p>
     <div class="actions">
-      <a class="btn" href="ab2013-disclosure.html" download="ab2013-disclosure.html">Download HTML</a>
-      <a class="btn ghost" href="ab2013-disclosure.html" target="_blank" rel="noopener">Open in browser</a>
+      <button class="btn" type="button" id="dl">Download HTML</button>
+      <button class="btn ghost" type="button" id="view">Open in browser</button>
     </div>
     <p class="fine">This is a free structural fix, not a signed legal opinion. A licensed California attorney reviews the paid DeadlineSF packages and issues a Verified Compliance Receipt.</p>
     <p class="fine" style="margin-top:10px"><a href="https://deadlinesf.net" style="color:var(--muted)">More gaps? → deadlinesf.net</a></p>
@@ -171,14 +159,28 @@
   </footer>
 
 <script>
+  const DISCLOSURE = "PLACEHOLDER";
   function install(){
     document.getElementById('offer').style.display='none';
     document.getElementById('done').style.display='block';
     try{ history.replaceState(null,'','#claimed'); }catch(_){}
   }
+  function downloadPatch(){
+    const blob = new Blob([DISCLOSURE], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'ab2013-disclosure.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 2000);
+  }
+  function viewPatch(){
+    const blob = new Blob([DISCLOSURE], {type:'text/html;charset=utf-8'});
+    window.open(URL.createObjectURL(blob), '_blank', 'noopener');
+  }
   document.getElementById('go').addEventListener('click', install);
+  document.getElementById('dl').addEventListener('click', downloadPatch);
+  document.getElementById('view').addEventListener('click', viewPatch);
   if(location.hash==='#claimed') install();
-
   try{
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if(SR){

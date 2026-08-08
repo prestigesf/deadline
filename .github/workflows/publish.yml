@@ -1,39 +1,14 @@
 name: publish
 
-# Publishes index.html to GitHub Pages.
-#
-# This exists because the environment that writes this page has no outbound
-# network — it can push to git and nothing else. So the deploy has to happen
-# on GitHub's runners rather than from the author's machine. `enablement: true`
-# turns Pages on the first time, so no setting has to be flipped by hand.
+# Netlify is the live host for claimfreepatch.netlify.app.
+# GitHub Pages was failing at configure-pages. Disabled until Pages is
+# enabled in repo Settings → Pages. Deploy via Netlify repo link or drag-drop.
 
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  deploy:
+  noop:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: "."
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - run: echo "Pages disabled. Deploy via Netlify link or drag-drop index.html."
