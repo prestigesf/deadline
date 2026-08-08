@@ -146,8 +146,8 @@
     <h1>Patch <span class="hi">ready.</span></h1>
     <p class="lede">Download the disclosure page. Replace the bracketed fields. Publish at <b style="color:var(--ink)">/ab2013</b> or similar. Link it from your footer.</p>
     <div class="actions">
-      <button class="btn" type="button" id="dl">Download HTML</button>
-      <button class="btn ghost" type="button" id="view">Open in browser</button>
+      <a class="btn" id="dl" href="ab2013-disclosure.html" download="ab2013-disclosure.html">Download HTML</a>
+      <a class="btn ghost" id="view" href="ab2013-disclosure.html" target="_blank" rel="noopener">Open in browser</a>
     </div>
     <p class="fine">This is a free structural fix, not a signed legal opinion. A licensed California attorney reviews the paid DeadlineSF packages and issues a Verified Compliance Receipt.</p>
     <p class="fine" style="margin-top:10px"><a href="https://deadlinesf.net" style="color:var(--muted)">More gaps? → deadlinesf.net</a></p>
@@ -159,28 +159,38 @@
   </footer>
 
 <script>
-  const DISCLOSURE = "PLACEHOLDER";
   function install(){
     document.getElementById('offer').style.display='none';
     document.getElementById('done').style.display='block';
     try{ history.replaceState(null,'','#claimed'); }catch(_){}
   }
-  function downloadPatch(){
-    const blob = new Blob([DISCLOSURE], {type:'text/html;charset=utf-8'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'ab2013-disclosure.html';
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url), 2000);
-  }
-  function viewPatch(){
-    const blob = new Blob([DISCLOSURE], {type:'text/html;charset=utf-8'});
-    window.open(URL.createObjectURL(blob), '_blank', 'noopener');
-  }
   document.getElementById('go').addEventListener('click', install);
-  document.getElementById('dl').addEventListener('click', downloadPatch);
-  document.getElementById('view').addEventListener('click', viewPatch);
   if(location.hash==='#claimed') install();
+
+  // If relative file 404s (old Netlify deploy), fall back to GitHub raw
+  const RAW = 'https://raw.githubusercontent.com/prestigesf/deadline/main/ab2013-disclosure.html';
+  async function ensureDisclosure(e){
+    try{
+      const r = await fetch('ab2013-disclosure.html', {method:'HEAD'});
+      if(r.ok) return;
+    }catch(_){}
+    e.preventDefault();
+    const a = e.currentTarget;
+    if(a.id==='dl'){
+      const res = await fetch(RAW);
+      const text = await res.text();
+      const blob = new Blob([text], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url; link.download = 'ab2013-disclosure.html';
+      link.click(); URL.revokeObjectURL(url);
+    } else {
+      window.open(RAW, '_blank', 'noopener');
+    }
+  }
+  document.getElementById('dl').addEventListener('click', ensureDisclosure);
+  document.getElementById('view').addEventListener('click', ensureDisclosure);
+
   try{
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if(SR){
