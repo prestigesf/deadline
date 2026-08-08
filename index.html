@@ -9,8 +9,15 @@
 <link rel="canonical" href="https://claimfreepatch.netlify.app/">
 <style>
   :root{
-    --bg:#050505; --panel:#0d0d0d; --ink:#f5f5f5; --muted:#8a8a8a;
-    --line:#1c1c1c; --red:#ff3b2f; --red-glow:rgba(255,59,47,.45);
+    --bg:#050505;
+    --panel:#0d0d0d;
+    --ink:#f5f5f5;
+    --muted:#8a8a8a;
+    --line:#1c1c1c;
+    --red:#ff3b2f;
+    --green:#46e6a0;
+    --red-glow:rgba(255,59,47,.45);
+    --green-glow:rgba(70,230,160,.35);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{min-height:100%}
@@ -19,7 +26,8 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
     display:flex; flex-direction:column; min-height:100vh;
   }
-  a{color:inherit}
+  a{color:inherit; transition:color .15s ease}
+  a:hover{color:var(--red)}
   .top{
     display:flex; justify-content:space-between; align-items:center;
     padding:18px 24px; border-bottom:1px solid var(--line);
@@ -27,7 +35,7 @@
     font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
   }
   .top a{color:var(--muted); text-decoration:none}
-  .top a:hover{color:var(--ink)}
+  .top a:hover{color:var(--red)}
   .top .mark{color:var(--ink); letter-spacing:.18em}
   .top .mark span{color:var(--red)}
   main{
@@ -37,7 +45,7 @@
   .eyebrow{
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
     font-size:12px; letter-spacing:.16em; text-transform:uppercase;
-    color:var(--red); margin-bottom:20px; font-weight:600;
+    color:var(--green); margin-bottom:20px; font-weight:600;
   }
   h1{
     font-size:clamp(2rem,6.5vw,3.25rem); line-height:1.05; font-weight:800;
@@ -59,9 +67,9 @@
     font-size:1.15rem; letter-spacing:.03em;
     padding:22px 48px; border-radius:12px;
     box-shadow:0 0 0 0 var(--red-glow);
-    animation:pulse 2.4s infinite; transition:transform .12s ease;
+    animation:pulse 2.4s infinite; transition:transform .12s ease, background .15s ease;
   }
-  .cta:hover{transform:translateY(-2px)}
+  .cta:hover{transform:translateY(-2px); background:#ff5248}
   .cta:active{transform:translateY(1px)}
   @keyframes pulse{
     0%{box-shadow:0 0 0 0 var(--red-glow)}
@@ -72,7 +80,8 @@
     margin-top:22px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
     font-size:.85rem; color:var(--muted); letter-spacing:.04em;
   }
-  .voice b{color:var(--ink)}
+  .voice b{color:var(--ink); cursor:default; transition:color .15s ease}
+  .voice b:hover{color:var(--red)}
   .what{
     margin-top:48px; text-align:left; width:100%;
     border:1px solid var(--line); background:var(--panel); border-radius:12px;
@@ -84,29 +93,42 @@
     color:var(--muted); margin-bottom:14px;
   }
   .what ul{list-style:none; display:grid; gap:10px}
-  .what li{font-size:.95rem; color:var(--ink); padding-left:18px; position:relative}
+  .what li{
+    font-size:.95rem; color:var(--ink); padding-left:18px; position:relative;
+    transition:color .15s ease;
+  }
+  .what li:hover{color:var(--red)}
   .what li::before{
     content:""; position:absolute; left:0; top:.55em;
-    width:8px; height:8px; border-radius:50%; background:var(--red);
+    width:8px; height:8px; border-radius:50%; background:var(--green);
+    box-shadow:0 0 8px var(--green-glow);
+    transition:background .15s ease, box-shadow .15s ease;
   }
-  .what li span{color:var(--muted)}
+  .what li:hover::before{background:var(--red); box-shadow:0 0 8px var(--red-glow)}
+  .what li span{color:var(--muted); transition:color .15s ease}
+  .what li:hover span{color:var(--red)}
   #done{display:none; width:100%}
   .check{
-    width:72px; height:72px; border-radius:50%; border:2px solid var(--red);
+    width:72px; height:72px; border-radius:50%; border:2px solid var(--green);
     display:flex; align-items:center; justify-content:center;
-    margin:0 auto 22px; font-size:2rem; color:var(--red);
+    margin:0 auto 22px; font-size:2rem; color:var(--green);
+    box-shadow:0 0 20px var(--green-glow);
   }
   .actions{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:28px}
   .btn{
     display:inline-block; padding:14px 22px; border-radius:10px; border:0; cursor:pointer;
     font-weight:700; font-size:.95rem; text-decoration:none; font-family:inherit;
-    background:var(--red); color:#fff;
+    background:var(--red); color:#fff; transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
+  .btn:hover{background:#ff5248; color:#fff}
   .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+  .btn.ghost:hover{color:var(--red); border-color:var(--red)}
   .fine{
     margin-top:28px; font-size:12px; color:var(--muted); line-height:1.5;
     max-width:46ch; margin-left:auto; margin-right:auto;
   }
+  .fine a{color:var(--muted); text-decoration:none; transition:color .15s ease}
+  .fine a:hover{color:var(--red)}
   footer{
     border-top:1px solid var(--line); padding:16px 24px;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -114,6 +136,7 @@
     color:#3a3a3a; text-align:center;
   }
   footer a{color:#5a5a5a; text-decoration:none}
+  footer a:hover{color:var(--red)}
 </style>
 </head>
 <body>
@@ -150,7 +173,7 @@
       <a class="btn ghost" id="view" href="ab2013-disclosure.html" target="_blank" rel="noopener">Open in browser</a>
     </div>
     <p class="fine">This is a free structural fix, not a signed legal opinion. A licensed California attorney reviews the paid DeadlineSF packages and issues a Verified Compliance Receipt.</p>
-    <p class="fine" style="margin-top:10px"><a href="https://deadlinesf.net" style="color:var(--muted)">More gaps? → deadlinesf.net</a></p>
+    <p class="fine" style="margin-top:10px"><a href="https://deadlinesf.net">More gaps? → deadlinesf.net</a></p>
   </main>
 
   <footer>
@@ -167,7 +190,6 @@
   document.getElementById('go').addEventListener('click', install);
   if(location.hash==='#claimed') install();
 
-  // If relative file 404s (old Netlify deploy), fall back to GitHub raw
   const RAW = 'https://raw.githubusercontent.com/prestigesf/deadline/main/ab2013-disclosure.html';
   async function ensureDisclosure(e){
     try{
