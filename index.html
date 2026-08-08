@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claim your patch — DeadlineSF</title>
+    <meta
+      name="description"
+      content="Embroidered DeadlineSF patch, included with your package. Send us a shipping address and it goes out with the next run."
+    />
+    <style>
+      /* Tokens lifted verbatim from public/index.html so this page and the
+         checkout cannot drift into two different-looking products. Change one,
+         change both. */
+      :root {
+        --bg: #05070d;
+        --panel: #0d1220;
+        --panel-2: #111830;
+        --ink: #eef2ff;
+        --muted: #9aa6c4;
+        --line: #1e2a44;
+        --accent: #34d399;
+        --deadline: #ff4d4f;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+        line-height: 1.55;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 28px 0 0;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+      }
+      header { padding: 40px 0 8px; }
+      .kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 12px;
+        color: var(--deadline);
+        margin-bottom: 14px;
+        font-weight: 600;
+      }
+      h1 {
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.08;
+        margin: 0 0 18px;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+      h1 .send { color: var(--deadline); }
+      .lede { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0; }
+
+      .badge { margin: 34px 0 10px; }
+      .badge svg { width: 168px; height: 168px; display: block; }
+
+      /* Steps */
+      ol.steps { list-style: none; counter-reset: s; margin: 34px 0; padding: 0; }
+      ol.steps li {
+        counter-increment: s;
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 14px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+      ol.steps li::before {
+        content: "0" counter(s);
+        color: var(--deadline);
+        font-variant-numeric: tabular-nums;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        padding-top: 2px;
+      }
+      ol.steps h3 {
+        margin: 0 0 4px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      ol.steps p { margin: 0; color: var(--muted); font-size: 14px; }
+
+      /* Shipping label */
+      form.label {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: linear-gradient(180deg, var(--panel-2), var(--panel));
+        padding: 24px;
+        margin: 8px 0 26px;
+      }
+      form.label legend,
+      .label-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .field { margin-bottom: 14px; }
+      .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+      label span {
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      input, select {
+        width: 100%;
+        /* 44px keeps the tap target usable on a phone; 16px stops iOS zooming
+           the page the moment the field is focused. */
+        min-height: 44px;
+        padding: 11px 13px;
+        font-size: 16px;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        font-family: inherit;
+      }
+      input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+      button {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #04120c;
+        background: var(--accent);
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 6px;
+      }
+      .note { margin: 12px 0 0; font-size: 12px; color: var(--muted); }
+      .hp { position: absolute; left: -9999px; }
+
+      footer {
+        margin: 8px 0 64px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      footer a { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="topbar">
+        <div>Deadline SF</div>
+        <div>San Francisco, CA</div>
+      </div>
+
+      <header>
+        <!--
+          This must name a package that actually exists in the catalog. The
+          page previously said "Studio Package", which is not one of the eight
+          SKUs sold — it sent people to buy something that could not be bought.
+          The eight are: AB 2013 Gap Audit, Tier 1 Intake + Applicability,
+          Tier 2 Provenance Install, Tier 3 Full Control Plane, Tier 4
+          Monitoring (Base/Pro), CA Lifeline Scan, CA Lifeline Implement.
+        -->
+        <div class="kicker">Free with the AB 2013 Gap Audit</div>
+        <h1>Tell us where to <span class="send">send it</span></h1>
+        <p class="lede">
+          Embroidered DeadlineSF patch — 3 in, merrowed border, iron-on backing.
+          Drop your address in the label below and it goes out with the next run.
+          Shipped anywhere in the US and Canada. No shipping charge.
+        </p>
+      </header>
+
+      <!-- Drawn rather than linked so the page is one self-contained file and
+           cannot render half-broken. Swap in the real artwork by replacing this
+           block with <img src="patch.png" alt="DeadlineSF embroidered patch" />. -->
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 200 200" role="img">
+          <defs>
+            <path id="arcTop" d="M100,100 m-74,0 a74,74 0 0,1 148,0" fill="none" />
+            <path id="arcBot" d="M100,100 m-66,0 a66,66 0 0,0 132,0" fill="none" />
+          </defs>
+          <circle cx="100" cy="100" r="88" fill="var(--deadline)" />
+          <circle cx="100" cy="100" r="78" fill="var(--panel)" />
+          <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)"
+                  stroke-width="1.5" stroke-dasharray="3 5" />
+          <text font-size="13" font-weight="700" letter-spacing="5"
+                fill="var(--ink)" font-family="monospace">
+            <textPath href="#arcTop" startOffset="50%" text-anchor="middle">DEADLINE</textPath>
+          </text>
+          <text font-size="13" font-weight="700" letter-spacing="5"
+                fill="var(--ink)" font-family="monospace">
+            <textPath href="#arcBot" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+          </text>
+          <rect x="52" y="86" width="96" height="2" fill="var(--deadline)" />
+          <text x="100" y="112" text-anchor="middle" font-size="26" font-weight="800"
+                letter-spacing="2" fill="var(--ink)">PATCH</text>
+          <rect x="52" y="120" width="96" height="2" fill="var(--deadline)" />
+          <text x="100" y="140" text-anchor="middle" font-size="9" letter-spacing="3"
+                fill="var(--muted)" font-family="monospace">NO. 001</text>
+        </svg>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <div>
+            <h3>Order the package</h3>
+            <p>Buy the AB 2013 Gap Audit on deadlinesf.net. The patch is included at no cost.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Send your address</h3>
+            <p>Fill in the shipping label on this page. It takes about a minute.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>It ships with the next run</h3>
+            <p>Patches go out in batches. You'll get an email when yours is posted.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!--
+        Netlify Forms: no backend, no function, no key. The submission lands in
+        the site's Forms tab. `netlify-honeypot` is the spam trap and must match
+        the hidden field below.
+      -->
+      <form
+        class="label"
+        name="patch-shipping"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="company-website"
+      >
+        <input type="hidden" name="form-name" value="patch-shipping" />
+        <p class="hp">
+          <label>Leave this empty <input name="company-website" tabindex="-1" /></label>
+        </p>
+
+        <div class="label-title">Shipping label</div>
+
+        <div class="field">
+          <label><span>Full name</span>
+            <input name="name" autocomplete="name" required /></label>
+        </div>
+        <div class="field">
+          <label><span>Email</span>
+            <input type="email" name="email" autocomplete="email" required /></label>
+        </div>
+        <div class="field">
+          <label><span>Order reference or the email you paid with</span>
+            <input name="order_reference" autocomplete="off" required /></label>
+        </div>
+        <div class="field">
+          <label><span>Street address</span>
+            <input name="address1" autocomplete="address-line1" required /></label>
+        </div>
+        <div class="field">
+          <label><span>Apartment, suite, unit <em>(optional)</em></span>
+            <input name="address2" autocomplete="address-line2" /></label>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label><span>City</span>
+              <input name="city" autocomplete="address-level2" required /></label>
+          </div>
+          <div class="field">
+            <label><span>State / province</span>
+              <input name="region" autocomplete="address-level1" required /></label>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label><span>ZIP / postal code</span>
+              <input name="postal_code" autocomplete="postal-code" required /></label>
+          </div>
+          <div class="field">
+            <label><span>Country</span>
+              <select name="country" autocomplete="country-name" required>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+              </select></label>
+          </div>
+        </div>
+
+        <button type="submit">Send my address</button>
+        <p class="note">
+          Used to post the patch and nothing else. US and Canada only — if you're
+          elsewhere, reply to your order email and we'll work it out.
+        </p>
+      </form>
+
+      <footer>
+        DeadlineSF · A PrestigeSF property ·
+        <a href="https://deadlinesf.net">deadlinesf.net</a>
+      </footer>
+    </div>
+  </body>
+</html>

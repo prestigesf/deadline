@@ -1,0 +1,10 @@
+# Static site: one page, no build step, no functions.
+#
+# This repo exists so claimfreepatch.netlify.app has a source. It was deployed
+# by hand before, which meant every change had to be made by hand — and nobody
+# with the file could push to it. Connect the Netlify site to this repo once
+# (Site configuration -> Build & deploy -> Link repository) and every future
+# edit is a commit.
+[build]
+  publish = "."
+  command = ""
