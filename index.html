@@ -3,101 +3,191 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DeadlineSF — Free Patch</title>
+<title>Free AB 2013 Patch — DeadlineSF</title>
+<meta name="description" content="Free California AB 2013 training-data transparency disclosure. One click. Publish on your site. Not legal advice.">
+<meta name="theme-color" content="#050505">
+<link rel="canonical" href="https://claimfreepatch.netlify.app/">
 <style>
   :root{
-    --bg:#050505; --ink:#f5f5f5; --muted:#8a8a8a;
-    --accent:#ff3b2f; --line:#1c1c1c; --card:#0d0d0d;
+    --bg:#050505;
+    --panel:#0d0d0d;
+    --ink:#f5f5f5;
+    --muted:#8a8a8a;
+    --line:#1c1c1c;
+    --red:#ff3b2f;
+    --red-glow:rgba(255,59,47,.45);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
+  html,body{min-height:100%}
   body{
     background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    min-height:100vh; text-align:center; padding:32px 20px;
+    display:flex; flex-direction:column; min-height:100vh;
   }
-  .brand{
+  a{color:inherit}
+  .top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 24px; border-bottom:1px solid var(--line);
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    letter-spacing:.18em; font-size:.8rem; color:var(--muted); margin-bottom:40px;
+    font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
   }
-  .brand b{color:var(--ink)}
+  .top a{color:var(--muted); text-decoration:none}
+  .top a:hover{color:var(--ink)}
+  .top .mark{color:var(--ink); letter-spacing:.18em}
+  .top .mark span{color:var(--red)}
+  main{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:48px 20px 64px; max-width:720px; margin:0 auto; width:100%;
+  }
+  .eyebrow{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--red); margin-bottom:20px; font-weight:600;
+  }
   h1{
-    font-size:clamp(2rem,7vw,3.4rem); line-height:1.05; font-weight:800;
-    letter-spacing:-.02em; margin-bottom:14px;
+    font-size:clamp(2rem,6.5vw,3.25rem); line-height:1.05; font-weight:800;
+    letter-spacing:-.02em; margin-bottom:16px;
   }
-  h1 .hi{color:var(--accent)}
-  .sub{color:var(--muted); font-size:1rem; margin-bottom:44px}
-  .install{
+  h1 .hi{color:var(--red)}
+  .lede{
+    color:var(--muted); font-size:1.05rem; line-height:1.55;
+    max-width:38ch; margin:0 auto 12px;
+  }
+  .law{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px; color:var(--muted); letter-spacing:.04em;
+    margin-bottom:40px;
+  }
+  .law b{color:var(--ink); font-weight:600}
+  .cta{
     appearance:none; border:0; cursor:pointer;
-    background:var(--accent); color:#fff; font-weight:800;
-    font-size:1.35rem; letter-spacing:.02em;
-    padding:26px 64px; border-radius:14px;
-    box-shadow:0 0 0 0 rgba(255,59,47,.55);
-    transition:transform .12s ease, box-shadow .3s ease;
+    background:var(--red); color:#fff; font-weight:800;
+    font-size:1.15rem; letter-spacing:.03em;
+    padding:22px 48px; border-radius:12px;
+    box-shadow:0 0 0 0 var(--red-glow);
     animation:pulse 2.4s infinite;
+    transition:transform .12s ease;
   }
-  .install:hover{transform:translateY(-2px)}
-  .install:active{transform:translateY(1px)}
+  .cta:hover{transform:translateY(-2px)}
+  .cta:active{transform:translateY(1px)}
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(255,59,47,.5)}
-    70%{box-shadow:0 0 0 22px rgba(255,59,47,0)}
+    0%{box-shadow:0 0 0 0 var(--red-glow)}
+    70%{box-shadow:0 0 0 20px rgba(255,59,47,0)}
     100%{box-shadow:0 0 0 0 rgba(255,59,47,0)}
   }
   .voice{
-    margin-top:26px; color:var(--muted); font-size:.9rem;
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.04em;
+    margin-top:22px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:.85rem; color:var(--muted); letter-spacing:.04em;
   }
   .voice b{color:var(--ink)}
-  /* success state */
-  #done{display:none; max-width:520px}
-  #done h1{font-size:clamp(1.8rem,6vw,2.8rem)}
-  .check{
-    width:76px;height:76px;border-radius:50%;border:3px solid var(--accent);
-    display:flex;align-items:center;justify-content:center;margin:0 auto 26px;
-    font-size:2.4rem;color:var(--accent)
+  .what{
+    margin-top:48px; text-align:left; width:100%;
+    border:1px solid var(--line); background:var(--panel); border-radius:12px;
+    padding:22px 22px 18px;
   }
-  .foot{position:fixed;bottom:18px;left:0;right:0;color:#3a3a3a;font-size:.7rem;
-    font-family:ui-monospace,monospace;letter-spacing:.15em}
+  .what h2{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:14px;
+  }
+  .what ul{list-style:none; display:grid; gap:10px}
+  .what li{
+    font-size:.95rem; color:var(--ink); padding-left:18px; position:relative;
+  }
+  .what li::before{
+    content:""; position:absolute; left:0; top:.55em;
+    width:8px; height:8px; border-radius:50%; background:var(--red);
+  }
+  .what li span{color:var(--muted)}
+  #done{display:none; width:100%}
+  .check{
+    width:72px; height:72px; border-radius:50%; border:2px solid var(--red);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 22px; font-size:2rem; color:var(--red);
+  }
+  .actions{
+    display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:28px;
+  }
+  .btn{
+    display:inline-block; padding:14px 22px; border-radius:10px;
+    font-weight:700; font-size:.95rem; text-decoration:none;
+    border:1px solid var(--red); background:var(--red); color:#fff;
+  }
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+  .fine{
+    margin-top:28px; font-size:12px; color:var(--muted); line-height:1.5;
+    max-width:46ch; margin-left:auto; margin-right:auto;
+  }
+  footer{
+    border-top:1px solid var(--line); padding:16px 24px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:#3a3a3a; text-align:center;
+  }
+  footer a{color:#5a5a5a; text-decoration:none}
 </style>
 </head>
 <body>
+  <div class="top">
+    <div class="mark">//DEADLINE<span>SF</span></div>
+    <a href="https://deadlinesf.net">deadlinesf.net</a>
+  </div>
 
-  <!-- STEP 1: the offer -->
   <main id="offer">
-    <div class="brand">// <b>DEADLINESF</b></div>
-    <h1>Your free <span class="hi">patch</span>.<br>One click.</h1>
-    <p class="sub">Fixes the gap. Nothing to type.</p>
-    <button class="install" onclick="install()">INSTALL FREE PATCH</button>
+    <div class="eyebrow">Free · California AB 2013</div>
+    <h1>Your free <span class="hi">disclosure patch</span>.<br>One click.</h1>
+    <p class="lede">A ready-to-publish training-data transparency page for your GenAI product. You fill the brackets. You put it on your site.</p>
+    <p class="law"><b>AB 2013</b> · operative Jan 1, 2026 · no user threshold · Cal. Civ. Code § 3111</p>
+
+    <button class="cta" id="go" type="button">GET FREE DISCLOSURE PATCH</button>
     <p class="voice">or just say <b>“yes”</b></p>
+
+    <div class="what">
+      <h2>What you get</h2>
+      <ul>
+        <li>HTML disclosure page structured to AB 2013 <span>(sources, size, ownership, copyright, PII, cleaning, window, synthetic, fine-tune)</span></li>
+        <li>You publish it — we never touch your live site</li>
+        <li>Not legal advice · ~90% of the structure · attorney review is the paid step</li>
+      </ul>
+    </div>
   </main>
 
-  <!-- STEP 2: confirmation -->
   <main id="done">
     <div class="check">✓</div>
     <h1>Patch <span class="hi">ready.</span></h1>
-    <p class="sub">Check your inbox — your fix and certificate are on the way.</p>
+    <p class="lede">Download the disclosure page. Replace the bracketed fields. Publish at <b style="color:var(--ink)">/ab2013</b> or similar. Link it from your footer.</p>
+    <div class="actions">
+      <a class="btn" href="ab2013-disclosure.html" download="ab2013-disclosure.html">Download HTML</a>
+      <a class="btn ghost" href="ab2013-disclosure.html" target="_blank" rel="noopener">Open in browser</a>
+    </div>
+    <p class="fine">This is a free structural fix, not a signed legal opinion. A licensed California attorney reviews the paid DeadlineSF packages and issues a Verified Compliance Receipt.</p>
+    <p class="fine" style="margin-top:10px"><a href="https://deadlinesf.net" style="color:var(--muted)">More gaps? → deadlinesf.net</a></p>
   </main>
 
-  <div class="foot">DEADLINESF</div>
+  <footer>
+    DeadlineSF · Help first. Always. ·
+    <a href="https://deadlinesf.net">deadlinesf.net</a>
+  </footer>
 
 <script>
   function install(){
     document.getElementById('offer').style.display='none';
     document.getElementById('done').style.display='block';
-    // TODO: hook this to the generator/email + consent log
+    try{ history.replaceState(null,'','#claimed'); }catch(_){}
   }
-  // "just say yes" — voice trigger (works where the browser allows mic)
+  document.getElementById('go').addEventListener('click', install);
+  if(location.hash==='#claimed') install();
+
   try{
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if(SR){
       const r = new SR(); r.continuous=true; r.interimResults=false; r.lang='en-US';
       r.onresult = e=>{
         const t = e.results[e.results.length-1][0].transcript.toLowerCase();
-        if(t.includes('yes')) install();
+        if(/\byes\b|\byeah\b|\bsure\b|\bok\b|\bokay\b/.test(t)) install();
       };
-      // start on first user tap anywhere (mic needs a gesture)
-      document.body.addEventListener('click',()=>{try{r.start()}catch(_){}}, {once:true});
+      document.body.addEventListener('click',()=>{try{r.start()}catch(_){}},{once:true});
     }
   }catch(_){}
 </script>
