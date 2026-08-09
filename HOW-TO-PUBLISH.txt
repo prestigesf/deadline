@@ -1,0 +1,33 @@
+# How to publish your free patch
+
+This is a high-level training-data transparency page (California Civil Code § 3111 / AB 2013).
+You publish it. DeadlineSF does not need access to your systems.
+
+## 1. Fill the page
+Open training-data-disclosure.html.
+Replace every [[ highlighted ]] field with accurate, high-level information.
+Ranges and categories are enough. Do not paste secrets or full datasets.
+
+## 2. Put it on your domain
+Recommended paths (pick one):
+- /training-data
+- /ab2013
+- /legal/training-data
+
+Upload the filled HTML (or paste into your CMS / docs tool).
+
+## 3. Link it from the footer
+Add a footer link next to Privacy / Terms, labeled:
+  Training data
+Point that link at the path you chose above.
+
+## 4. Optional: corner / footer badge
+Use training-data-badge.html if you want a small pill control.
+Change the href to your published path. The badge is only a pointer —
+the full disclosure page is what matters (similar in role to a dedicated
+transparency link used by major providers).
+
+## 5. Done
+You stay in control. Nothing installs on your servers. Nothing phones home.
+
+Questions: https://deadlinesf.net
