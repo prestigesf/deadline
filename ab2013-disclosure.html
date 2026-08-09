@@ -4,82 +4,92 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Training Data Transparency Disclosure — [[COMPANY NAME]]</title>
-<meta name="description" content="Training data transparency documentation pursuant to California Civil Code § 3111 (AB 2013).">
+<meta name="description" content="Documentation pursuant to California Civil Code section 3111.">
 <style>
-:root{--ink:#111;--muted:#5c5c5c;--line:#e6e6e6;--bg:#fff;--fill:#fff6bf;--accent:#111}
+:root{--ink:#0a0a0a;--muted:#555;--line:#ddd;--bg:#fff}
 *{box-sizing:border-box}
-body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
-.wrap{max-width:800px;margin:0 auto;padding:56px 24px 96px}
-.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-h1{font-size:clamp(1.6rem,4vw,2rem);line-height:1.2;margin:0 0 10px;font-weight:700;letter-spacing:-.02em}
-.sub{color:var(--muted);font-size:.95rem;margin:0 0 28px}
-.note{font-size:.88rem;color:var(--muted);background:#f7f7f7;border-left:3px solid #ccc;padding:14px 16px;margin:0 0 32px}
-h2{font-size:1rem;margin:36px 0 10px;padding-top:18px;border-top:1px solid var(--line);letter-spacing:-.01em}
-table{width:100%;border-collapse:collapse;font-size:.95rem;margin:8px 0 4px}
-th,td{text-align:left;vertical-align:top;padding:11px 12px;border-bottom:1px solid var(--line)}
-th{width:34%;color:var(--muted);font-weight:600}
-.fill{background:var(--fill);padding:1px 4px;border-radius:2px}
-footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
-code{font-size:.85em}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",Times,serif}
+.wrap{max-width:720px;margin:0 auto;padding:64px 24px 96px}
+.kicker{font:11px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+h1{font:600 1.75rem/1.25 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 8px}
+.meta{font:14px/1.45 ui-sans-serif,system-ui,sans-serif;color:var(--muted);margin:0 0 36px}
+.instr{font:13px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--muted);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin:0 0 36px}
+h2{font:600 13px/1.3 ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:32px 0 12px}
+dl{margin:0;padding:0}
+dt{font:600 13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--muted);margin:16px 0 4px}
+dd{margin:0;padding:0;font:16px/1.5 Georgia,"Times New Roman",Times,serif;min-height:1.5em}
+dd.ph{color:#999;border-bottom:1px dotted #ccc}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font:12px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+@media print{body{font-size:12pt}.instr{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="kicker">California Civil Code § 3111 · AB 2013</div>
+  <p class="kicker">California Civil Code § 3111</p>
   <h1>Training Data Transparency Disclosure</h1>
-  <p class="sub"><strong>[[COMPANY NAME]]</strong> · <strong>[[SYSTEM / MODEL NAME]]</strong></p>
-  <div class="note">
-    Replace every <span class="fill">[[ highlighted ]]</span> field with accurate, high-level information.
-    Delete rows that do not apply. Publish this page on your domain (recommended paths:
-    <code>/training-data</code> or <code>/ab2013</code>) and link it from your footer.
-    This is a high-level summary structure — not legal advice and not a data dump.
-  </div>
-  <h2>1. Dataset sources and ownership</h2>
-  <table>
-    <tr><th>Sources or owners</th><td class="fill">[[e.g. publicly available web data; licensed datasets; third-party providers; internal data]]</td></tr>
-    <tr><th>How obtained</th><td class="fill">[[purchased, licensed, publicly available, user-provided with rights, etc.]]</td></tr>
-    <tr><th>How they serve the purpose</th><td class="fill">[[one or two sentences on how these datasets support the system’s intended purpose]]</td></tr>
-  </table>
+  <p class="meta">[[COMPANY NAME]] · [[SYSTEM / MODEL NAME]]</p>
+  <p class="instr">Replace bracketed placeholders with accurate high-level information. Remove any section that does not apply. Publish on your domain and link from your site footer. This document is a high-level summary only. It is not legal advice.</p>
+  <h2>1. Sources and ownership</h2>
+  <dl>
+    <dt>Sources or owners of datasets</dt>
+    <dd class="ph">[[public web; licensed datasets; third parties; internal]]</dd>
+    <dt>How datasets were obtained</dt>
+    <dd class="ph">[[licensed; purchased; publicly available; user-provided]]</dd>
+    <dt>How datasets further the intended purpose</dt>
+    <dd class="ph">[[one or two sentences]]</dd>
+  </dl>
   <h2>2. System</h2>
-  <table>
-    <tr><th>Developer</th><td class="fill">[[Legal entity name]]</td></tr>
-    <tr><th>System or service</th><td class="fill">[[Product / model name available to Californians]]</td></tr>
-    <tr><th>Intended purpose</th><td class="fill">[[What the generative AI system does, high level]]</td></tr>
-    <tr><th>Substantial modification</th><td class="fill">[[Yes / No — if yes, describe at high level]]</td></tr>
-  </table>
-  <h2>3. Scale and types of data points</h2>
-  <table>
-    <tr><th>Number of data points</th><td class="fill">[[ranges OK — e.g. tokens, images, hours of audio]]</td></tr>
-    <tr><th>Types of data points</th><td class="fill">[[text, image, audio, video, code; label types if labeled]]</td></tr>
-  </table>
+  <dl>
+    <dt>Developer</dt>
+    <dd class="ph">[[legal entity]]</dd>
+    <dt>System or service</dt>
+    <dd class="ph">[[product or model name]]</dd>
+    <dt>Intended purpose</dt>
+    <dd class="ph">[[high-level description]]</dd>
+    <dt>Substantial modification</dt>
+    <dd class="ph">[[yes / no — if yes, high-level description]]</dd>
+  </dl>
+  <h2>3. Scale and types</h2>
+  <dl>
+    <dt>Number of data points</dt>
+    <dd class="ph">[[ranges acceptable]]</dd>
+    <dt>Types of data points</dt>
+    <dd class="ph">[[text; image; audio; video; code; label types if any]]</dd>
+  </dl>
   <h2>4. Intellectual property</h2>
-  <table>
-    <tr><th>Copyright / trademark / patent</th><td class="fill">[[may include protected material / mixed / public domain — high level]]</td></tr>
-  </table>
+  <dl>
+    <dt>Copyright, trademark, or patent status</dt>
+    <dd class="ph">[[may include protected material; mixed; public domain]]</dd>
+  </dl>
   <h2>5. Personal information</h2>
-  <table>
-    <tr><th>Personal information</th><td class="fill">[[whether datasets may include personal information under CA law; high level]]</td></tr>
-    <tr><th>Aggregate / de-identified</th><td class="fill">[[if applicable]]</td></tr>
-  </table>
-  <h2>6. Collection period and first use</h2>
-  <table>
-    <tr><th>Collection window</th><td class="fill">[[e.g. 2019–2025; ongoing if applicable]]</td></tr>
-    <tr><th>First used in development</th><td class="fill">[[approximate date or period]]</td></tr>
-  </table>
+  <dl>
+    <dt>Personal information</dt>
+    <dd class="ph">[[whether datasets may include personal information under California law]]</dd>
+    <dt>Aggregate or de-identified information</dt>
+    <dd class="ph">[[if applicable]]</dd>
+  </dl>
+  <h2>6. Collection period</h2>
+  <dl>
+    <dt>Collection window</dt>
+    <dd class="ph">[[e.g. 2019–2025; ongoing if applicable]]</dd>
+    <dt>First use in development</dt>
+    <dd class="ph">[[approximate period]]</dd>
+  </dl>
   <h2>7. Processing and synthetic data</h2>
-  <table>
-    <tr><th>Cleaning / processing</th><td class="fill">[[filtered, deduplicated, moderated — high level]]</td></tr>
-    <tr><th>Synthetic data</th><td class="fill">[[yes/no; general role if used]]</td></tr>
-  </table>
-  <h2>8. Fine-tuning (if applicable)</h2>
-  <table>
-    <tr><th>Fine-tuning data</th><td class="fill">[[sources/types at high level, or “not fine-tuned”]]</td></tr>
-  </table>
+  <dl>
+    <dt>Cleaning or other processing</dt>
+    <dd class="ph">[[high-level only]]</dd>
+    <dt>Synthetic data</dt>
+    <dd class="ph">[[used / not used — general role if used]]</dd>
+  </dl>
+  <h2>8. Fine-tuning</h2>
+  <dl>
+    <dt>Fine-tuning data</dt>
+    <dd class="ph">[[high-level sources, or not fine-tuned]]</dd>
+  </dl>
   <footer>
-    Version <span class="fill">[[1.0]]</span>
-    · Updated <span class="fill">[[DATE]]</span>
-    · Contact <span class="fill">[[compliance@company.com]]</span><br>
-    Posted pursuant to Cal. Civ. Code § 3111. High-level summary only. Not legal advice.
+    Version [[1.0]] · Updated [[DATE]] · Contact [[email]]<br>
+    Posted pursuant to Cal. Civ. Code § 3111. High-level summary. Not legal advice.
   </footer>
 </div>
 </body>
