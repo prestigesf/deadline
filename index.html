@@ -4,37 +4,42 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free patch — DeadlineSF</title>
-<meta name="description" content="Free public AB 2013 training-data disclosure patch. One click. You publish it. We never touch your systems.">
+<meta name="description" content="Free AB 2013 training-data disclosure page. Structured documentation. Optional footer badge. You publish it. We never touch your systems.">
 <meta name="theme-color" content="#050505">
 <link rel="canonical" href="https://claimfreepatch.netlify.app/">
 <style>
-  :root{--bg:#050505;--ink:#f5f5f5;--muted:#8a8a8a;--line:#1c1c1c;--red:#ff3b2f;--green:#46e6a0;--red-glow:rgba(255,59,47,.45);--green-glow:rgba(70,230,160,.35)}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{min-height:100%}
-  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh}
-  a{color:inherit;transition:color .15s ease}a:hover{color:var(--red)}
-  .top{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .top a{color:var(--muted);text-decoration:none}.top a:hover{color:var(--red)}
-  .mark{color:var(--ink);letter-spacing:.18em}.mark span{color:var(--red)}
-  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px 64px;max-width:560px;margin:0 auto;width:100%}
-  h1{font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
-  h1 .hi{color:var(--red)}
-  .sub{color:var(--muted);font-size:1rem;margin-bottom:36px;line-height:1.45}
-  .cta{appearance:none;border:0;cursor:pointer;background:var(--red);color:#fff;font-weight:800;font-size:1.1rem;letter-spacing:.03em;padding:20px 44px;border-radius:12px;box-shadow:0 0 0 0 var(--red-glow);animation:pulse 2.4s infinite;transition:transform .12s ease,background .15s ease}
-  .cta:hover{transform:translateY(-2px);background:#ff5248}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--red-glow)}70%{box-shadow:0 0 0 20px transparent}100%{box-shadow:0 0 0 0 transparent}}
-  .voice{margin-top:20px;font-family:ui-monospace,Menlo,monospace;font-size:.85rem;color:var(--muted);letter-spacing:.04em}
-  .voice b{color:var(--ink);transition:color .15s ease}.voice b:hover{color:var(--red)}
-  #done{display:none;width:100%}
-  .check{width:68px;height:68px;border-radius:50%;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:var(--green);box-shadow:0 0 18px var(--green-glow)}
-  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
-  .btn{display:inline-block;padding:14px 22px;border-radius:10px;border:0;cursor:pointer;font-weight:700;font-size:.95rem;text-decoration:none;font-family:inherit;background:var(--red);color:#fff}
-  .btn:hover{background:#ff5248;color:#fff}
-  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn.ghost:hover{color:var(--red);border-color:var(--red)}
-  .fine{margin-top:22px;font-size:12px;color:var(--muted);line-height:1.5;max-width:42ch;margin-left:auto;margin-right:auto}
-  .fine a{color:var(--muted)}.fine a:hover{color:var(--red)}
-  footer{border-top:1px solid var(--line);padding:16px 24px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;text-align:center}
-  footer a{color:#5a5a5a;text-decoration:none}footer a:hover{color:var(--red)}
+:root{--bg:#050505;--ink:#f5f5f5;--muted:#8a8a8a;--line:#1c1c1c;--red:#ff3b2f;--green:#46e6a0;--red-glow:rgba(255,59,47,.45);--green-glow:rgba(70,230,160,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+a{color:inherit;transition:color .15s ease}a:hover{color:var(--red)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.top a{color:var(--muted);text-decoration:none}.top a:hover{color:var(--red)}
+.mark{color:var(--ink);letter-spacing:.18em}.mark span{color:var(--red)}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px 64px;max-width:560px;margin:0 auto;width:100%}
+h1{font-size:clamp(1.9rem,6vw,2.75rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+h1 .hi{color:var(--red)}
+.sub{color:var(--muted);font-size:1rem;margin-bottom:28px;line-height:1.5}
+.cta{appearance:none;border:0;cursor:pointer;background:var(--red);color:#fff;font-weight:800;font-size:1.05rem;letter-spacing:.03em;padding:18px 40px;border-radius:12px;box-shadow:0 0 0 0 var(--red-glow);animation:pulse 2.4s infinite;transition:transform .12s ease,background .15s ease}
+.cta:hover{transform:translateY(-2px);background:#ff5248}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--red-glow)}70%{box-shadow:0 0 0 18px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.voice{margin-top:18px;font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+.voice b{color:var(--ink)}.voice b:hover{color:var(--red)}
+#done{display:none;width:100%}
+.check{width:64px;height:64px;border-radius:50%;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.7rem;color:var(--green);box-shadow:0 0 18px var(--green-glow)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+.btn{display:inline-block;padding:13px 20px;border-radius:10px;border:0;cursor:pointer;font-weight:700;font-size:.92rem;text-decoration:none;font-family:inherit;background:var(--red);color:#fff}
+.btn:hover{background:#ff5248;color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn.ghost:hover{color:var(--red);border-color:var(--red)}
+.fine{margin-top:22px;font-size:12px;color:var(--muted);line-height:1.55;max-width:44ch;margin-left:auto;margin-right:auto}
+.fine a{color:var(--muted)}.fine a:hover{color:var(--red)}
+.preview{margin-top:28px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;text-align:left}
+.preview .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-family:ui-monospace,Menlo,monospace}
+.preview .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview .fake-foot{font-size:12px;color:#666}
+.dsf-training-badge{display:inline-flex;align-items:center;font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#9a9a9a;border:1px solid #3a3a3a;padding:7px 11px;border-radius:999px}
+footer{border-top:1px solid var(--line);padding:16px 24px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;text-align:center}
+footer a{color:#5a5a5a;text-decoration:none}footer a:hover{color:var(--red)}
 </style>
 </head>
 <body>
@@ -44,50 +49,59 @@
   </div>
   <main id="offer">
     <h1>Your free <span class="hi">patch</span>.<br>One click.</h1>
-    <p class="sub">Public training-data disclosure page. You fill it. You publish it. We never touch your systems.</p>
+    <p class="sub">Structured training-data disclosure (§ 3111). Optional footer badge. You publish it. We never touch your systems.</p>
     <button class="cta" id="go" type="button">GET FREE PATCH</button>
     <p class="voice">or just say <b>“yes”</b></p>
+    <div class="preview" aria-hidden="true">
+      <div class="lbl">Optional badge · links to your page</div>
+      <div class="row">
+        <span class="fake-foot">Privacy · Terms</span>
+        <span class="dsf-training-badge">Training data</span>
+      </div>
+    </div>
   </main>
   <main id="done">
     <div class="check">✓</div>
     <h1>Patch <span class="hi">ready.</span></h1>
-    <p class="sub">Download the page. Replace the yellow fields. Publish it on your site. Nothing installs on your servers.</p>
+    <p class="sub">Download the disclosure page. Fill the fields. Publish on your domain. Optional badge links to it — same role as a transparency link on major providers.</p>
     <div class="actions">
-      <a class="btn" id="dl" href="ab2013-disclosure.html" download="training-data-disclosure.html">Download HTML</a>
-      <a class="btn ghost" id="view" href="ab2013-disclosure.html" target="_blank" rel="noopener">Open</a>
+      <a class="btn" id="dl" href="ab2013-disclosure.html" download="training-data-disclosure.html">Download disclosure</a>
+      <a class="btn ghost" id="badge" href="training-data-badge.html" download="training-data-badge.html">Badge snippet</a>
+      <a class="btn ghost" id="how" href="HOW-TO-PUBLISH.txt" download="HOW-TO-PUBLISH.txt">How to publish</a>
     </div>
-    <p class="fine">This is the public training-data disclosure structure (AB 2013). Other gaps may still exist. <a href="https://deadlinesf.net">deadlinesf.net</a></p>
+    <p class="fine">High-level summary only. Other AI rules may still apply. <a href="https://deadlinesf.net">deadlinesf.net</a></p>
   </main>
   <footer>DeadlineSF · <a href="https://deadlinesf.net">deadlinesf.net</a></footer>
 <script>
-  function install(){
-    document.getElementById('offer').style.display='none';
-    document.getElementById('done').style.display='block';
-    try{history.replaceState(null,'','#claimed')}catch(_){}
+function install(){
+  document.getElementById('offer').style.display='none';
+  document.getElementById('done').style.display='block';
+  try{history.replaceState(null,'','#claimed')}catch(_){}
+}
+document.getElementById('go').addEventListener('click',install);
+if(location.hash==='#claimed')install();
+const RAW='https://raw.githubusercontent.com/prestigesf/deadline/main/';
+async function ensure(e,file,downloadName){
+  try{const r=await fetch(file,{method:'HEAD'});if(r.ok)return}catch(_){}
+  e.preventDefault();
+  const res=await fetch(RAW+file);const text=await res.text();
+  const blob=new Blob([text],{type:'text/plain'});
+  const url=URL.createObjectURL(blob);
+  if(downloadName){const a=document.createElement('a');a.href=url;a.download=downloadName;a.click()}
+  else window.open(url,'_blank','noopener');
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+document.getElementById('dl').addEventListener('click',e=>ensure(e,'ab2013-disclosure.html','training-data-disclosure.html'));
+document.getElementById('badge').addEventListener('click',e=>ensure(e,'training-data-badge.html','training-data-badge.html'));
+document.getElementById('how').addEventListener('click',e=>ensure(e,'HOW-TO-PUBLISH.txt','HOW-TO-PUBLISH.txt'));
+try{
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SR){const r=new SR();r.continuous=true;r.interimResults=false;r.lang='en-US';
+    r.onresult=e=>{const t=e.results[e.results.length-1][0].transcript.toLowerCase();
+      if(/\byes\b|\byeah\b|\bsure\b|\bok\b|\bokay\b/.test(t))install()};
+    document.body.addEventListener('click',()=>{try{r.start()}catch(_){}},{once:true});
   }
-  document.getElementById('go').addEventListener('click',install);
-  if(location.hash==='#claimed')install();
-  const RAW='https://raw.githubusercontent.com/prestigesf/deadline/main/ab2013-disclosure.html';
-  async function ensureFile(e){
-    try{const r=await fetch('ab2013-disclosure.html',{method:'HEAD'});if(r.ok)return}catch(_){}
-    e.preventDefault();
-    if(e.currentTarget.id==='dl'){
-      const res=await fetch(RAW);const text=await res.text();
-      const blob=new Blob([text],{type:'text/html'});
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');a.href=url;a.download='training-data-disclosure.html';a.click();URL.revokeObjectURL(url);
-    }else window.open(RAW,'_blank','noopener');
-  }
-  document.getElementById('dl').addEventListener('click',ensureFile);
-  document.getElementById('view').addEventListener('click',ensureFile);
-  try{
-    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-    if(SR){const r=new SR();r.continuous=true;r.interimResults=false;r.lang='en-US';
-      r.onresult=e=>{const t=e.results[e.results.length-1][0].transcript.toLowerCase();
-        if(/\byes\b|\byeah\b|\bsure\b|\bok\b|\bokay\b/.test(t))install()};
-      document.body.addEventListener('click',()=>{try{r.start()}catch(_){}},{once:true});
-    }
-  }catch(_){}
+}catch(_){}
 </script>
 </body>
 </html>
